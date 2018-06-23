@@ -1,31 +1,53 @@
-const collection = document.getElementsByClassName('num');
-const nums = Array.from(collection);
+const collection = document.getElementsByClassName('main');
+const main = Array.from(collection);
+
+const collection2 = document.getElementsByClassName('extra');
+const extra = Array.from(collection2);
 
 let Narr = [];
+let N2arr = [];
 
 const button = document.getElementById('button').addEventListener('click', () => {
-    // generate random numbers -> store them in array
-    generateRandomN();
 
-    Narr = Narr.sort((a,b) => {
-        return a > b;
-    });
+    // reset Arrays
+    Narr = [];
+    N2arr = [];
+
+    // generate random Picks
+    generatePicks();
 
     // push the values to their corresponding elements
-    for(let i = 0; i < 5; i++){
-        nums[i].innerHTML = Narr[i];
-    }
-
+    setInner(Narr, main);
+    setInner(N2arr, extra);
 });
 
-generateRandomN = () => {
-    Narr = [];
-   for(let i = 0; i < 5; i++){
-       let rand = Math.floor((Math.random() * 50) + 1);
-       if(rand === Narr[i - 1]){
-           console.log('fired same');
+generateRandomN = (n, upper, arr) => {
+    for(let i = 0; i < n; i++){
+        let rand = Math.floor((Math.random() * upper) + 1);
+
+        if(rand === Narr[i - 1]){
             rand = rand +1;
         }
-       Narr.push(rand);
-   }
+        arr.push(rand);
+    }
+    sortArr(arr);
+}
+
+sortArr = (arr) => {
+    arr = arr.sort((a, b) => {
+        return a > b;
+    });
+}
+
+generatePicks = () => {
+    // generate main numbers
+    generateRandomN(5, 50, Narr);
+    // generate extra picks
+    generateRandomN(2, 10, N2arr);
+}
+
+setInner = (arr, name) => {
+    for (let i = 0; i < name.length; i++) {
+        name[i].innerHTML = arr[i];
+    }
 }
