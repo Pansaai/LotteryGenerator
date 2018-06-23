@@ -25,8 +25,8 @@ generateRandomN = (n, upper, arr) => {
     for(let i = 0; i < n; i++){
         let rand = Math.floor((Math.random() * upper) + 1);
 
-        if(rand === Narr[i - 1]){
-            rand = rand +1;
+        if(rand === arr[i - 1]){
+            rand = rand + 1;
         }
         arr.push(rand);
     }
