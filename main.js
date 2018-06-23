@@ -21,24 +21,24 @@ const button = document.getElementById('button').addEventListener('click', () =>
     setInner(N2arr, extra);
 });
 
+// Generate a RandomNumber and push it to the right Array
 generateRandomN = (n, upper, arr) => {
     for(let i = 0; i < n; i++){
         let rand = Math.floor((Math.random() * upper) + 1);
-
-        if(rand === arr[i - 1]){
-            rand = rand + 1;
-        }
         arr.push(rand);
     }
     sortArr(arr);
+    checkSame(arr);
 }
 
+// sort the array from low to high
 sortArr = (arr) => {
     arr = arr.sort((a, b) => {
         return a > b;
     });
 }
 
+// generate the main and extra picks
 generatePicks = () => {
     // generate main numbers
     generateRandomN(5, 50, Narr);
@@ -46,8 +46,19 @@ generatePicks = () => {
     generateRandomN(2, 10, N2arr);
 }
 
+// set the innerHTML of the corresponding picks
 setInner = (arr, name) => {
     for (let i = 0; i < name.length; i++) {
         name[i].innerHTML = arr[i];
+    }
+}
+
+// if 2 the same numbers generate 1 new one and check again until all numbers are different. 
+checkSame = (arr) => {
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === arr[i+1]){
+            console.log('changed number ' + arr[i+1]);
+            arr[i+1] = arr[i+1] + 1;
+        }
     }
 }
