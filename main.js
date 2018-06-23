@@ -28,8 +28,9 @@ generateRandomN = (n, upper, arr) => {
         arr.push(rand);
     }
 
-    sortArr(arr);
-    checkDuplicate(arr, upper);
+    while(!checkDuplicate(arr, upper)){
+        checkDuplicate(arr, upper);
+    }
 }
 
 // sort the array from low to high
@@ -54,17 +55,6 @@ setInner = (arr, name) => {
     }
 }
 
-// if 2 the same numbers generate 1 new one and check again until all numbers are different. 
-// checkSame = (arr, upper) => {
-//     for(let i = 0; i < arr.length; i++){
-//         if(arr[i] === arr[i+1]){
-//             console.log('changed number ' + arr[i+1]);
-//             arr[i+1] = Math.floor((Math.random() * upper) + 1);
-//         }
-//     }
-//     sortArr(arr);
-// }
-
 //TODO check for duplicates with a hashmap
 checkDuplicate = (arr, upper) => {
     let hash = new Map();
@@ -74,7 +64,9 @@ checkDuplicate = (arr, upper) => {
         } else {
             arr[i] = Math.floor((Math.random() * upper) + 1);
             hash.set(arr[i]);
-            sortArr(arr);
+            return false;
         }
     }
+    sortArr(arr);
+    return true;
 }
