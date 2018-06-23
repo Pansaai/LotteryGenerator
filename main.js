@@ -1,11 +1,15 @@
 const collection = document.getElementsByClassName('num');
 const nums = Array.from(collection);
-console.log(nums);
+
+let Narr = [];
 
 const button = document.getElementById('button').addEventListener('click', () => {
     // generate random numbers -> store them in array
     generateRandomN();
-    console.log(Narr);
+
+    Narr = Narr.sort((a,b) => {
+        return a > b;
+    });
 
     // push the values to their corresponding elements
     for(let i = 0; i < 5; i++){
@@ -14,7 +18,6 @@ const button = document.getElementById('button').addEventListener('click', () =>
 
 });
 
-let Narr = [];
 generateRandomN = () => {
     Narr = [];
    for(let i = 0; i < 5; i++){
