@@ -22,6 +22,10 @@ generateRandomN = () => {
     Narr = [];
    for(let i = 0; i < 5; i++){
        let rand = Math.floor((Math.random() * 50) + 1);
+       if(rand === Narr[i - 1]){
+           console.log('fired same');
+            rand = rand +1;
+        }
        Narr.push(rand);
    }
 }
