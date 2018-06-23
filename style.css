@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d55a9;
+}
+
+#button{
+    
+}
+
+.content{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.num{
+    background: white;
+    border: 1px solid black;
+    border-radius: 15%;
+    padding: 1rem;
+    margin: 2rem 1rem;
+}
